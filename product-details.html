@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masterpiece Specification – LUXORA</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+  <!-- Ambient Luminous Mesh Background -->
+  <div class="bg-mesh-container">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-spark"></span> LUXORA
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="products.html" class="nav-link">Collections</a></li>
+        <li><a href="products.html?category=1" class="nav-link">Electronics</a></li>
+        <li><a href="products.html?category=3" class="nav-link">Watches</a></li>
+        <li><a href="products.html?category=2" class="nav-link">Fashion</a></li>
+        <li><a href="orders.html" class="nav-link">Track Orders</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Wishlist Button -->
+        <a href="wishlist.html" class="nav-btn" title="Wishlist">
+          ♥
+          <span class="nav-badge wishlist-badge" style="display:none;">0</span>
+        </a>
+
+        <!-- Cart Button -->
+        <a href="cart.html" class="nav-btn cart-nav-btn" title="Shopping Bag">
+          🛒
+          <span class="nav-badge cart-badge">0</span>
+        </a>
+
+        <!-- User Slot -->
+        <div class="user-auth-slot">
+          <a href="login.html" class="btn btn-glass btn-sm">Sign In</a>
+        </div>
+
+        <button class="mobile-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Details Dynamic View -->
+  <main class="container product-details-container" id="productDetailsView">
+    <!-- Populated by products.js -->
+  </main>
+
+  <!-- Related Luxury Products Section -->
+  <section class="container" style="padding: 40px 0 80px 0; border-top:var(--border-glass);">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:32px;">
+      <div>
+        <span class="section-tag">COMPLEMENTARY HARMONY</span>
+        <h2 style="font-size:1.8rem; margin-top:8px;">You May Also Admire</h2>
+      </div>
+      <a href="products.html" class="btn btn-glass btn-sm">View All →</a>
+    </div>
+
+    <div class="products-grid" id="relatedProductsGrid">
+      <!-- Injected by products.js -->
+    </div>
+  </section>
+
+  <!-- Modern Luxury Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 LUXORA Inc. Certified Authentic Luxury Artifacts.</div>
+        <div class="payment-badges">
+          <span class="pay-badge">VISA INFINITE</span>
+          <span class="pay-badge">UPI / BHIM</span>
+          <span class="pay-badge">NET BANKING</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+</body>
+</html>

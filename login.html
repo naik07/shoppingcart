@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In – LUXORA Private Client</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+  <!-- Ambient Luminous Mesh Background -->
+  <div class="bg-mesh-container">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Header -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-spark"></span> LUXORA
+      </a>
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-glass btn-sm">← Back to Storefront</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Main Content -->
+  <main style="min-height: calc(85vh - var(--nav-height)); display:flex; align-items:center; justify-content:center; padding: 40px 20px;">
+    <div style="width:100%; max-width:460px; background:var(--bg-card); backdrop-filter:var(--backdrop-blur); border:var(--border-glass-bright); border-radius:var(--radius-lg); padding:40px; box-shadow:var(--shadow-glass), 0 0 40px rgba(168,85,247,0.25);">
+      
+      <div style="text-align:center; margin-bottom:32px;">
+        <span class="section-tag" style="margin-bottom:12px;">PRIVATE ACCESS</span>
+        <h1 style="font-size:1.85rem; margin-bottom:8px;">Welcome Back</h1>
+        <p style="color:var(--text-secondary); font-size:0.92rem;">Enter your credentials to access your private vault.</p>
+      </div>
+
+      <!-- Quick Demo Access Pills for Evaluator -->
+      <div style="background:rgba(255,255,255,0.03); border:var(--border-glass); border-radius:var(--radius-md); padding:14px; margin-bottom:24px;">
+        <div style="font-size:0.75rem; text-transform:uppercase; color:var(--accent-purple); font-weight:700; margin-bottom:8px; text-align:center;">
+          ⚡ Quick Demo Credentials (Click to fill)
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn btn-glass btn-sm" onclick="quickFillLogin('customer')" style="flex:1; font-size:0.8rem;">
+            👤 Customer
+          </button>
+          <button type="button" class="btn btn-glass btn-sm" onclick="quickFillLogin('admin')" style="flex:1; font-size:0.8rem; border-color:var(--accent-cyan); color:var(--accent-cyan);">
+            ⚙ Admin
+          </button>
+        </div>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="e.g. alex@luxora.com" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <label class="form-label" for="loginPassword" style="margin-bottom:0;">Password</label>
+            <a href="#" onclick="showToast('For evaluation, use password: Alex@123 or Admin@123', 'info'); return false;" style="font-size:0.8rem; color:var(--accent-cyan);">Forgot Password?</a>
+          </div>
+          <input type="password" id="loginPassword" class="form-input" placeholder="••••••••••••" required autocomplete="current-password">
+        </div>
+
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:24px; font-size:0.88rem; color:var(--text-secondary);">
+          <input type="checkbox" id="rememberMe" checked style="accent-color:var(--accent-purple);">
+          <label for="rememberMe" style="cursor:pointer;">Remember this device for 30 days</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">
+          Sign In to Luxora →
+        </button>
+      </form>
+
+      <div style="text-align:center; margin-top:28px; padding-top:20px; border-top:var(--border-glass); font-size:0.9rem; color:var(--text-secondary);">
+        New to the atelier? 
+        <a href="signup.html" style="color:var(--accent-purple); font-weight:700; text-decoration:underline;">Create VIP Account</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curated Collections – LUXORA</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+  <!-- Ambient Luminous Mesh Background -->
+  <div class="bg-mesh-container">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-spark"></span> LUXORA
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="products.html" class="nav-link active">Collections</a></li>
+        <li><a href="products.html?category=1" class="nav-link">Electronics</a></li>
+        <li><a href="products.html?category=3" class="nav-link">Watches</a></li>
+        <li><a href="products.html?category=2" class="nav-link">Fashion</a></li>
+        <li><a href="orders.html" class="nav-link">Track Orders</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Wishlist Button -->
+        <a href="wishlist.html" class="nav-btn" title="Wishlist">
+          ♥
+          <span class="nav-badge wishlist-badge" style="display:none;">0</span>
+        </a>
+
+        <!-- Cart Button -->
+        <a href="cart.html" class="nav-btn cart-nav-btn" title="Shopping Bag">
+          🛒
+          <span class="nav-badge cart-badge">0</span>
+        </a>
+
+        <!-- User Slot -->
+        <div class="user-auth-slot">
+          <a href="login.html" class="btn btn-glass btn-sm">Sign In</a>
+        </div>
+
+        <button class="mobile-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header Banner -->
+  <div style="background:linear-gradient(180deg, rgba(20, 16, 40, 0.6) 0%, transparent 100%); padding: 50px 0 20px 0; border-bottom:var(--border-glass);">
+    <div class="container">
+      <span class="section-tag">CURATED ATELIER</span>
+      <h1 style="font-size:clamp(2.2rem, 4vw, 3rem); margin-bottom:8px;">The Complete Collection</h1>
+      <p style="color:var(--text-secondary); max-width:600px;">
+        Exquisite craftsmanship, precision chronometers, haute couture, and spatial acoustic marvels.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Catalog Layout -->
+  <div class="container catalog-layout">
+    <!-- Filter Sidebar -->
+    <aside class="filter-sidebar">
+      <div class="filter-header">
+        <span class="filter-title">Filters</span>
+        <button class="filter-reset-btn" id="resetFiltersBtn">Reset All</button>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="filter-section">
+        <div class="filter-label">Category</div>
+        <div class="category-pill-list">
+          <div class="category-pill active" data-cat="">
+            <span>All Masterpieces</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">16</span>
+          </div>
+          <div class="category-pill" data-cat="1">
+            <span>Electronics</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">4</span>
+          </div>
+          <div class="category-pill" data-cat="2">
+            <span>Fashion</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">2</span>
+          </div>
+          <div class="category-pill" data-cat="3">
+            <span>Watches</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">2</span>
+          </div>
+          <div class="category-pill" data-cat="4">
+            <span>Shoes</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">2</span>
+          </div>
+          <div class="category-pill" data-cat="5">
+            <span>Accessories</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">3</span>
+          </div>
+          <div class="category-pill" data-cat="6">
+            <span>Home & Living</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">3</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price Range Slider -->
+      <div class="filter-section">
+        <div class="filter-label">Max Price Allocation</div>
+        <input type="range" id="priceRangeSlider" min="5000" max="200000" step="5000" value="200000" 
+               style="width:100%; accent-color:var(--accent-purple); cursor:pointer;">
+        <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:0.85rem;">
+          <span style="color:var(--text-muted);">₹5,000</span>
+          <span style="color:var(--accent-cyan); font-weight:700;" id="priceRangeVal">₹2,00,000</span>
+        </div>
+      </div>
+
+      <!-- Assurance Badges -->
+      <div style="background:rgba(255,255,255,0.03); border:var(--border-glass); border-radius:var(--radius-md); padding:16px;">
+        <div style="font-size:0.82rem; font-weight:700; color:var(--accent-purple); text-transform:uppercase; margin-bottom:8px;">
+          ✦ The Luxora Guarantee
+        </div>
+        <p style="font-size:0.78rem; color:var(--text-secondary); line-height:1.5;">
+          Every artifact undergoes rigorous dual-stage verification before dispatch from the regional vault.
+        </p>
+      </div>
+    </aside>
+
+    <!-- Product Grid & Search Toolbar -->
+    <main>
+      <div class="catalog-header-bar">
+        <!-- Live Search -->
+        <div class="catalog-search-box">
+          <span class="catalog-search-icon">🔍</span>
+          <input type="text" id="catalogSearchInput" class="catalog-search-input" placeholder="Search by name, material, or category...">
+        </div>
+
+        <div style="display:flex; align-items:center; gap:16px;">
+          <span style="font-size:0.88rem; color:var(--text-secondary);" id="catalogResultCount">Curating pieces...</span>
+          
+          <!-- Sort Dropdown -->
+          <select id="catalogSortSelect" class="catalog-sort-select">
+            <option value="featured">Featured Curations</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="newest">Newest Arrivals</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="productsGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Modern Luxury Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 LUXORA Inc. All Rights Reserved. Master OOPS Implementation.</div>
+        <div class="payment-badges">
+          <span class="pay-badge">VISA INFINITE</span>
+          <span class="pay-badge">UPI / BHIM</span>
+          <span class="pay-badge">MASTERCARD</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Executive Dashboard – LUXORA</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+  <!-- Ambient Luminous Mesh Background -->
+  <div class="bg-mesh-container">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-spark"></span> LUXORA <span style="font-size:0.75rem; color:var(--accent-purple); border:1px solid rgba(168,85,247,0.4); padding:2px 8px; border-radius:99px; letter-spacing:0.05em;">ADMIN</span>
+      </a>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-glass btn-sm">Storefront</a>
+        <button class="btn btn-primary btn-sm" onclick="openAddProductModal()">+ Add New Product</button>
+        <div class="user-auth-slot"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <div style="background:linear-gradient(180deg, rgba(20, 16, 40, 0.6) 0%, transparent 100%); padding: 36px 0 20px 0; border-bottom:var(--border-glass);">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+        <div>
+          <span class="section-tag">MANAGEMENT CONSOLE</span>
+          <h1 style="font-size:2.2rem; margin-bottom:4px;">Executive Store Operations</h1>
+          <p style="color:var(--text-secondary); font-size:0.92rem;">Real-time inventory management, order telemetry, and revenue analytics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 36px 0 80px 0;">
+    
+    <!-- 1. KPI Stats Cards Grid -->
+    <div class="admin-stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(16,185,129,0.15); color:var(--status-success);">₹</div>
+        <div>
+          <div class="stat-val" id="statTotalRevenue">₹0</div>
+          <div class="stat-label">Total Store Revenue</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(59,130,246,0.15); color:var(--accent-blue);">📦</div>
+        <div>
+          <div class="stat-val" id="statTotalOrders">0</div>
+          <div class="stat-label">Total Consignments</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(168,85,247,0.15); color:var(--accent-purple);">💎</div>
+        <div>
+          <div class="stat-val" id="statTotalProducts">0</div>
+          <div class="stat-label">Catalog Masterpieces</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(251,191,36,0.15); color:var(--accent-gold);">👑</div>
+        <div>
+          <div class="stat-val" id="statTotalCustomers">0</div>
+          <div class="stat-label">VIP Patrons & Clients</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Data Visualizations & Analytics Charts -->
+    <div style="display:grid; grid-template-columns: 1.4fr 0.8fr; gap:24px; margin-bottom:36px;">
+      <!-- Revenue Trend Chart -->
+      <div class="cart-table-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <div>
+            <h3 style="font-size:1.15rem;">Revenue Trajectory (Annual Growth)</h3>
+            <span style="font-size:0.8rem; color:var(--status-success); font-weight:700;">▲ +34.8% vs last quarter</span>
+          </div>
+          <span style="font-size:0.82rem; color:var(--text-muted);">INR Settlement</span>
+        </div>
+        <div id="revenueChartBox">
+          <!-- Rendered SVG Chart by admin.js -->
+        </div>
+      </div>
+
+      <!-- Category Share Chart -->
+      <div class="cart-table-card">
+        <h3 style="font-size:1.15rem; margin-bottom:18px;">Category Revenue Allocation</h3>
+        <div id="categoryShareBox">
+          <!-- Rendered Category Bars by admin.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Recent Orders & Dispatch Management -->
+    <div class="admin-table-container">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+        <div>
+          <h3 style="font-size:1.25rem;">Live Consignment Telemetry & Orders</h3>
+          <p style="font-size:0.85rem; color:var(--text-secondary);">Update order dispatch pipeline in real-time.</p>
+        </div>
+      </div>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Order Ref</th>
+            <th>Client</th>
+            <th>Payable Total</th>
+            <th>Payment Strategy</th>
+            <th>Status Pipeline</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="adminOrdersTableBody">
+          <!-- Populated by admin.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4. Product Catalog Inventory Manager -->
+    <div class="admin-table-container">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+        <div>
+          <h3 style="font-size:1.25rem;">Product Catalog & Vault Allocation</h3>
+          <p style="font-size:0.85rem; color:var(--text-secondary);">Manage price points, discount percentages, and stock inventory.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="openAddProductModal()">+ Add New Piece</button>
+      </div>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Visual</th>
+            <th>Masterpiece Title</th>
+            <th>Domain</th>
+            <th>Net Price</th>
+            <th>Vault Stock</th>
+            <th>Edit / Remove</th>
+          </tr>
+        </thead>
+        <tbody id="adminProductsTableBody">
+          <!-- Populated by admin.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 5. Registered Customer Base -->
+    <div class="admin-table-container">
+      <h3 style="font-size:1.25rem; margin-bottom:6px;">Registered VIP Patron Registry</h3>
+      <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:18px;">Customer loyalty status, points ledger, and credentials hierarchy.</p>
+      
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Client ID</th>
+            <th>Patron Name</th>
+            <th>Email Coordination</th>
+            <th>Access Hierarchy</th>
+            <th>Loyalty Points</th>
+            <th>Residence</th>
+          </tr>
+        </thead>
+        <tbody id="adminCustomersTableBody">
+          <!-- Populated by admin.js -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- Add / Edit Product Modal -->
+  <div class="modal-overlay" id="adminProductModal">
+    <div class="modal-box" style="max-width:680px;">
+      <button class="modal-close-btn" onclick="closeProductModal()">✕</button>
+      <h2 id="productModalTitle" style="font-size:1.6rem; margin-bottom:20px;">Add New Exclusive Product</h2>
+
+      <form id="adminProductForm">
+        <div class="form-group">
+          <label class="form-label" for="pFormName">Piece Title / Model</label>
+          <input type="text" id="pFormName" class="form-input" placeholder="e.g. Royal Tourbillon Obsidian Edition" required>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label class="form-label" for="pFormCategory">Category Domain</label>
+            <select id="pFormCategory" class="form-select" required>
+              <option value="1">Electronics (Spatial Acoustics)</option>
+              <option value="2">Fashion (Haute Couture)</option>
+              <option value="3">Watches (Tourbillons)</option>
+              <option value="4">Shoes (Architectural Footwear)</option>
+              <option value="5">Accessories (Titanium Accents)</option>
+              <option value="6">Home & Living (Levitation & Nebula)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pFormPrice">Retail Price (INR ₹)</label>
+            <input type="number" id="pFormPrice" class="form-input" placeholder="e.g. 84999" step="0.01" required>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label class="form-label" for="pFormDiscount">Privilege Discount (%)</label>
+            <input type="number" id="pFormDiscount" class="form-input" placeholder="0 - 90" min="0" max="90" value="10">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pFormStock">Vault Inventory Quantity</label>
+            <input type="number" id="pFormStock" class="form-input" placeholder="e.g. 15" min="0" value="15" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="pFormImage">High-Res Image URL</label>
+          <input type="url" id="pFormImage" class="form-input" placeholder="https://images.unsplash.com/..." value="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="pFormDesc">Detailed Description & Specifications</label>
+          <textarea id="pFormDesc" class="form-textarea" rows="3" placeholder="Crafted with forged carbon and sapphire crystal..." required></textarea>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:24px;">
+          <button type="button" class="btn btn-glass" onclick="closeProductModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save to Catalog</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modern Luxury Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 LUXORA Inc. Executive Command & Telemetry.</div>
+        <div class="payment-badges">
+          <span class="pay-badge">ADMIN CONTROL</span>
+          <span class="pay-badge">JAVA OOPS 25</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
